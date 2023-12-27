@@ -1,3 +1,4 @@
+This work is based on someone elses and as soon a I recall who it was, I will note their great work here.
 
 These scripts add a context menu (right click menu) to caja.
 - Right clicking a file or folder
