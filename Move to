@@ -1,0 +1,18 @@
+IFS="
+"
+
+if [ ! -z "$1" ]; then
+  dest=$(zenity --file-selection --directory --title="Choose Target Directory ${@}")
+  for filename in $@; do
+    if [ -e "${dest}"/"${filename}" ]; then
+      zenity --question --ellipsize --title="Target File Exists" --text="'${filename}' already exists in target directory.\n\nReplace?"
+      if [ $? -ne 0 ]; then
+        continue
+      fi
+    fi
+    mv "${filename}" "${dest}"
+    if [ $? -ne 0 ]; then
+      zenity --error --ellipsize --title="Error" --text="'${filename}' could not be moved."
+    fi
+  done
+fi
